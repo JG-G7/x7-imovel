@@ -1,0 +1,273 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="X7 Imóvel - Seu próximo imóvel começa aqui.">
+<title>X7 Imóvel | Portal Imobiliário</title>
+<style>
+:root {
+  --dark:#303b37;
+  --green:#52665b;
+  --gold:#b79b70;
+  --cream:#f5f2ec;
+  --white:#fff;
+  --text:#303631;
+  --muted:#777d77;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;color:var(--text);background:#fff}
+a{text-decoration:none;color:inherit}
+button,input,select{font:inherit}
+.topbar{background:var(--dark);color:white;padding:11px 7%;font-size:13px}
+header{padding:22px 7%;display:flex;align-items:center;justify-content:space-between;background:white}
+.logo{font-size:27px;font-weight:800;letter-spacing:1px;color:var(--dark)}
+.logo span{color:var(--gold)}
+nav{display:flex;gap:25px;font-size:14px;font-weight:600}
+nav a:hover{color:var(--gold)}
+.menu-btn{display:none;border:0;background:none;font-size:25px}
+.hero{
+ min-height:540px;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ text-align:center;
+ padding:70px 20px;
+ background:linear-gradient(#252b2770,#252b2780),
+ url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1800&q=85') center/cover;
+ color:white;
+}
+.hero-content{width:100%;max-width:1000px}
+.hero small{letter-spacing:4px;text-transform:uppercase;color:#eee}
+.hero h1{font-size:45px;margin:20px 0 15px}
+.hero p{font-size:17px;margin-bottom:35px}
+.searchbox{background:white;padding:22px;border-radius:5px;color:var(--text);box-shadow:0 12px 35px #0002}
+.tabs{display:flex;gap:10px;margin-bottom:17px}
+.tabs button{padding:11px 25px;border:1px solid #ddd;background:#fff;color:var(--dark);cursor:pointer}
+.tabs button.active{background:var(--dark);color:white}
+.searchfields{display:grid;grid-template-columns:2fr 1fr 1fr 1fr auto;gap:10px}
+.searchfields input,.searchfields select{
+ min-width:0;width:100%;padding:15px;border:1px solid #ddd;border-radius:3px;background:white;color:#444
+}
+.btn{background:var(--green);color:white;padding:15px 25px;border:0;cursor:pointer;border-radius:3px;font-weight:bold}
+.btn:hover{background:var(--dark)}
+.section{padding:75px 7%}
+.section-title{text-align:center;margin-bottom:40px}
+.section-title small{color:var(--gold);letter-spacing:3px;text-transform:uppercase}
+.section-title h2{font-size:32px;margin:12px 0;color:var(--dark)}
+.section-title p{color:var(--muted)}
+.categories{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.category{background:var(--cream);padding:30px 15px;text-align:center;border-radius:4px}
+.category strong{display:block;margin-bottom:9px;font-size:18px}
+.category p{color:var(--muted);font-size:13px}
+.properties{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.property{border:1px solid #eee;background:white;overflow:hidden;border-radius:4px}
+.property img{width:100%;height:220px;object-fit:cover}
+.property-info{padding:20px}
+.tag{display:inline-block;background:var(--cream);padding:6px 10px;font-size:11px;color:var(--green);margin-bottom:12px}
+.property h3{font-size:18px;margin-bottom:8px}
+.property p{font-size:13px;color:var(--muted);line-height:1.6}
+.price{font-size:21px;color:var(--green);font-weight:bold;margin:15px 0}
+.features{border-top:1px solid #eee;padding-top:14px;color:var(--muted);font-size:12px}
+.empty{display:none;text-align:center;padding:35px;background:var(--cream)}
+.about{background:var(--cream);display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:45px}
+.about img{width:100%;height:340px;object-fit:cover}
+.about h2{font-size:32px;color:var(--dark);margin:15px 0}
+.about p{line-height:1.9;color:var(--muted);margin-bottom:20px}
+.contact{background:var(--dark);color:white;text-align:center;padding:65px 20px}
+.contact h2{font-size:30px;margin-bottom:15px}
+.contact p{color:#ddd;margin-bottom:25px}
+footer{background:#222b26;color:#ddd;padding:35px 7%;text-align:center;font-size:13px;line-height:2}
+footer strong{color:var(--gold)}
+@media(max-width:850px){
+ .searchfields{grid-template-columns:1fr 1fr}
+ .properties{grid-template-columns:repeat(2,1fr)}
+ .categories{grid-template-columns:repeat(2,1fr)}
+ .about{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+ header{padding:18px 5%}
+ nav{display:none;position:absolute;top:75px;left:0;right:0;background:white;padding:25px;flex-direction:column;z-index:5}
+ nav.open{display:flex}
+ .menu-btn{display:block}
+ .hero{min-height:490px}
+ .hero h1{font-size:32px}
+ .searchfields{grid-template-columns:1fr}
+ .properties{grid-template-columns:1fr}
+ .section{padding:55px 5%}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+ X7 IMÓVEL | Seu próximo imóvel começa aqui
+</div>
+
+<header>
+ <a class="logo" href="#">X7 <span>IMÓVEL</span></a>
+ <button class="menu-btn" onclick="document.querySelector('nav').classList.toggle('open')">☰</button>
+ <nav>
+  <a href="#inicio">INÍCIO</a>
+  <a href="#imoveis">IMÓVEIS</a>
+  <a href="#categorias">CATEGORIAS</a>
+  <a href="#empresa">A EMPRESA</a>
+  <a href="#contato">CONTATO</a>
+ </nav>
+</header>
+
+<section class="hero" id="inicio">
+ <div class="hero-content">
+  <small>ENCONTRE SEU NOVO LAR</small>
+  <h1>O imóvel que você procura está aqui!</h1>
+  <p>Encontre oportunidades para comprar ou alugar.</p>
+
+  <div class="searchbox">
+   <div class="tabs">
+    <button class="active" onclick="setMode('Venda',this)">Venda</button>
+    <button onclick="setMode('Locação',this)">Locação</button>
+   </div>
+   <div class="searchfields">
+    <input id="local" placeholder="Cidade ou bairro">
+    <select id="tipo">
+     <option value="">Tipo de imóvel</option>
+     <option>Casa</option>
+     <option>Apartamento</option>
+     <option>Terreno</option>
+     <option>Comercial</option>
+    </select>
+    <select id="quartos">
+     <option value="">Quartos</option>
+     <option value="1">1 ou mais</option>
+     <option value="2">2 ou mais</option>
+     <option value="3">3 ou mais</option>
+    </select>
+    <select id="preco">
+     <option value="">Valor máximo</option>
+     <option value="300000">R$ 300 mil</option>
+     <option value="500000">R$ 500 mil</option>
+     <option value="1000000">R$ 1 milhão</option>
+    </select>
+    <button class="btn" onclick="searchProperties()">BUSCAR</button>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="categorias">
+ <div class="section-title">
+  <small>ENCONTRE O QUE PROCURA</small>
+  <h2>Explore nossos imóveis</h2>
+  <p>As melhores oportunidades para seu próximo investimento.</p>
+ </div>
+ <div class="categories">
+  <div class="category"><strong>⌂ Casas</strong><p>Casas para comprar e alugar</p></div>
+  <div class="category"><strong>▦ Apartamentos</strong><p>Conforto e praticidade</p></div>
+  <div class="category"><strong>◇ Terrenos</strong><p>Espaço para construir</p></div>
+  <div class="category"><strong>▤ Comerciais</strong><p>Espaços para seu negócio</p></div>
+ </div>
+</section>
+
+<section class="section" id="imoveis" style="background:#faf9f6">
+ <div class="section-title">
+  <small>OPORTUNIDADES</small>
+  <h2>Imóveis em destaque</h2>
+  <p>Conheça algumas opções demonstrativas do portal.</p>
+ </div>
+
+ <div class="properties" id="propertyList">
+
+  <article class="property" data-mode="Venda" data-type="Casa" data-city="curitiba" data-price="450000" data-rooms="3">
+   <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=900&q=80" alt="Casa moderna">
+   <div class="property-info">
+    <span class="tag">VENDA · DEMONSTRAÇÃO</span>
+    <h3>Casa moderna</h3>
+    <p>Exemplo de anúncio · Curitiba</p>
+    <div class="price">R$ 450.000</div>
+    <div class="features">3 quartos · 2 banheiros · 2 vagas</div>
+   </div>
+  </article>
+
+  <article class="property" data-mode="Venda" data-type="Apartamento" data-city="curitiba" data-price="320000" data-rooms="2">
+   <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=80" alt="Apartamento">
+   <div class="property-info">
+    <span class="tag">VENDA · DEMONSTRAÇÃO</span>
+    <h3>Apartamento elegante</h3>
+    <p>Exemplo de anúncio · Curitiba</p>
+    <div class="price">R$ 320.000</div>
+    <div class="features">2 quartos · 1 banheiro · 1 vaga</div>
+   </div>
+  </article>
+
+  <article class="property" data-mode="Locação" data-type="Casa" data-city="curitiba" data-price="2500" data-rooms="3">
+   <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=900&q=80" alt="Casa para alugar">
+   <div class="property-info">
+    <span class="tag">LOCAÇÃO · DEMONSTRAÇÃO</span>
+    <h3>Casa confortável</h3>
+    <p>Exemplo de anúncio · Curitiba</p>
+    <div class="price">R$ 2.500/mês</div>
+    <div class="features">3 quartos · 2 banheiros · 2 vagas</div>
+   </div>
+  </article>
+
+ </div>
+ <div class="empty" id="empty">Nenhum imóvel demonstrativo encontrado com esses filtros. Tente outra pesquisa.</div>
+</section>
+
+<section class="section about" id="empresa">
+ <div>
+  <small style="color:#a68b62;letter-spacing:3px">CONHEÇA A X7</small>
+  <h2>Mais que encontrar um imóvel, realizar sonhos.</h2>
+  <p>A X7 Imóvel nasceu para aproximar pessoas das melhores oportunidades imobiliárias. Nosso objetivo é oferecer uma experiência simples, transparente e moderna para quem deseja comprar, vender ou alugar.</p>
+  <a href="#contato" class="btn">FALE CONOSCO</a>
+ </div>
+ <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1000&q=80" alt="Ambiente residencial">
+</section>
+
+<section class="contact" id="contato">
+ <h2>Vamos encontrar seu próximo imóvel?</h2>
+ <p>Entre em contato com a equipe X7 Imóvel.</p>
+ <a class="btn" href="mailto:contato@x7imovel.com.br">ENTRAR EM CONTATO</a>
+</section>
+
+<footer>
+ <strong>X7 IMÓVEL</strong><br>
+ Portal imobiliário<br>
+ © 2026 X7 Imóvel. Todos os direitos reservados.
+</footer>
+
+<script>
+let mode="Venda";
+
+function setMode(value,button){
+ mode=value;
+ document.querySelectorAll(".tabs button").forEach(b=>b.classList.remove("active"));
+ button.classList.add("active");
+}
+
+function searchProperties(){
+ const city=document.getElementById("local").value.toLowerCase();
+ const type=document.getElementById("tipo").value;
+ const rooms=Number(document.getElementById("quartos").value)||0;
+ const price=Number(document.getElementById("preco").value)||Infinity;
+ let count=0;
+
+ document.querySelectorAll(".property").forEach(card=>{
+  const match=
+   card.dataset.mode===mode &&
+   (!type||card.dataset.type===type) &&
+   (!city||card.dataset.city.includes(city)) &&
+   Number(card.dataset.rooms)>=rooms &&
+   Number(card.dataset.price)<=price;
+
+  card.style.display=match?"block":"none";
+  if(match)count++;
+ });
+
+ document.getElementById("empty").style.display=count?"none":"block";
+ document.getElementById("imoveis").scrollIntoView({behavior:"smooth"});
+}
+</script>
+</body>
+</html>
